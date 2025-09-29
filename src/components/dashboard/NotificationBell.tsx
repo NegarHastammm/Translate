@@ -1,13 +1,22 @@
+"use client";
 
-import { FC } from "react";
-import { Bell } from "lucide-react";
+import { useState } from "react";
+import { Bell, BellOff } from "lucide-react";
 
-const NotificationBell: FC = () => {
+export default function NotificationBell() {
+  const [enabled, setEnabled] = useState(false);
+
   return (
-    <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200">
-      <Bell size={20} />
+    <button
+      onClick={() => setEnabled(!enabled)}
+      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+      title={enabled ? "اعلان‌ها فعال هستند" : "اعلان‌ها غیرفعال هستند"}
+    >
+      {enabled ? (
+        <Bell className="text-green-500" size={24} />
+      ) : (
+        <BellOff className="text-gray-500" size={24} />
+      )}
     </button>
   );
-};
-
-export default NotificationBell;
+}

@@ -1,40 +1,30 @@
 
 import { FC } from "react";
-import { Home, User, Settings, BarChart2, HelpCircle, LogOut } from "lucide-react";
+import { HelpCircle, LogOut, BookMarked , ChartSpline,  LayoutDashboard} from "lucide-react";
 import Link from "next/link";
-
-const Sidebar: FC = () => {
-  const links = [
-    { href: "/dashboard", label: "خانه", icon: <Home size={20} /> },
-    { href: "/dashboard/profile", label: "پروفایل", icon: <User size={20} /> },
-    { href: "/dashboard/reports", label: "گزارش‌ها", icon: <BarChart2 size={20} /> },
-    { href: "/dashboard/settings", label: "تنظیمات", icon: <Settings size={20} /> },
-    { href: "/dashboard/help", label: "راهنما", icon: <HelpCircle size={20} /> },
-  ];
-
+interface SidebarProps {
+  onLinkClick?: () => void; // تابعی برای بستن سایدبار
+}
+export default function Sidebar({ onLinkClick }: SidebarProps) {
   return (
-    <div className="w-64 h-screen bg-white dark:bg-gray-900 border-l dark:border-gray-800 flex flex-col justify-between">
-      <ul className="p-4 space-y-3">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200"
-            >
-              {link.icon}
-              <span>{link.label}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div className="p-4">
-        <button className="flex items-center gap-2 w-full p-2 rounded-lg bg-red-600 text-white hover:bg-red-700">
-          <LogOut size={20} />
-          خروج از سامانه
-        </button>
-      </div>
-    </div>
-  );
-};
+    <nav className="flex flex-col gap-4">
+      <Link href="/dashboard" onClick={onLinkClick} className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <LayoutDashboard size={20} /> داشبورد
+      </Link>
+      <Link href="/study" onClick={onLinkClick} className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <BookMarked size={20} /> کتابخانه هوشمند
+      </Link>
+      <Link href="/notifications" onClick={onLinkClick} className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <ChartSpline size={20} /> گزارشگیری و آمار
+      </Link>
+      <Link href="/settings" onClick={onLinkClick} className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <HelpCircle size={20} /> گزارش خطا و پیشنهاد
+      </Link>
+      <Link href="/logout" className="flex items-center gap-2 p-2 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+        <LogOut size={20} /> خروج از حساب کاربری
+      </Link>
+ 
 
-export default Sidebar;
+    </nav>
+  );
+}

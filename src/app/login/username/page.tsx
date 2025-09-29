@@ -1,10 +1,10 @@
 // ---- app/login/username/page.tsx ----
 import { FC } from "react";
-import LogoPlaceholder from "@/username/LogoPlaceholder";
-import UsernameInput from "@/username/UsernameInput";
-import PasswordInput from "@/username/PasswordInput";
-import SubmitUsernamePassword from "@/username/SubmitUsernamePassword";
-import LoginWithPhoneLink from "@/username/LoginWithPhoneLink";
+import LogoPlaceholder from "@/components/username/LogoPlaceholder";
+import UsernameInput from "@/components/username/UsernameInput";
+import PasswordInput from "@/components/username/PasswordInput";
+import SubmitUsernamePassword from "@/components/username/SubmitUsernamePassword";
+import LoginWithPhoneLink from "@/components/username/LoginWithPhoneLink";
 
 const UsernameLoginPage: FC = () => {
   return (
