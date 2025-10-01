@@ -8,6 +8,9 @@ export default function DashboardPage() {
     <DashboardLayout>
       <TopImages />
       <ContentGrid />
+      
+      
     </DashboardLayout>
+    
   );
 }
